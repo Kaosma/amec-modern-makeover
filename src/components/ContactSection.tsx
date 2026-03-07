@@ -84,7 +84,7 @@ export default function ContactSection() {
 
             <div className="flex gap-4 mt-8">
               <a
-                href="https://facebook.com/profile.php?id=61572771257692"
+                href="https://www.facebook.com/profile.php?id=61572771257692"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-card border border-border/50 flex items-center justify-center hover:border-primary/30 transition-colors"
