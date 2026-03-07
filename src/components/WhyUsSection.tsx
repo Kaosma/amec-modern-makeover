@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "./useScrollAnimation";
-import { Target, Heart, Gem } from "lucide-react";
+import { TrendingUp, Heart, Gem } from "lucide-react";
 
 const values = [
   {
-    icon: Target,
+    icon: TrendingUp,
     title: "Resultat",
     desc: "Genom att outsourca din bokföring till oss kan du fokusera på att driva ditt företag medan vi tar hand om det administrativa arbetet.",
   },
