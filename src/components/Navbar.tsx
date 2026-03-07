@@ -23,7 +23,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <a href="#" className="flex-shrink-0">
-          <img src={logo} alt="AMECO Konsult AB" className="h-14 w-auto" />
+          <img src={logo} alt="AMECO Konsult AB" className="h-28 w-auto" />
         </a>
 
         {/* Desktop */}
