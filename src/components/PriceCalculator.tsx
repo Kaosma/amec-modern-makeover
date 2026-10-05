@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "./useScrollAnimation";
 import { Calculator, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   { id: "bokforing", label: "Löpande bokföring", pricePerMonth: 2500 },
@@ -9,7 +10,6 @@ const services = [
   { id: "deklaration", label: "Skatteberäkning & Deklaration", pricePerMonth: 1000 },
   { id: "bokslut", label: "Bokslut & Årsredovisning", pricePerMonth: 2000 },
   { id: "radgivning", label: "Budgetplanering & Rådgivning", pricePerMonth: 1500 },
-  { id: "ledarskap", label: "Ledarskapskurser", pricePerMonth: 3000 },
 ];
 
 const companySizes = [
@@ -151,12 +151,12 @@ export default function PriceCalculator() {
                 </div>
               )}
 
-              <a
-                href="#kontakt"
+              <Link
+                to="/kontakt"
                 className="block text-center w-full mt-6 px-6 py-3 rounded-lg bg-gradient-gold text-primary-foreground font-semibold hover:opacity-90 transition-opacity text-sm"
               >
                 Få en exakt offert
-              </a>
+              </Link>
               <p className="text-muted-foreground text-xs mt-3 text-center">
                 * Priserna är uppskattningar. Kontakta oss för exakta priser.
               </p>
