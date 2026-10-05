@@ -93,7 +93,11 @@ export default function PriceCalculator() {
                 ca {price.toLocaleString("sv-SE")} kr/mån
               </p>
               <p className="text-muted-foreground text-xs mt-3">Exkl. moms. Priset är en uppskattning.</p>
-              <Link to="/kontakt"
+              <Link to="/form"
+                state={{
+                  subject: "Få en exakt offert",
+                  message: `Underlag från prisberäkningen:\n- Antal anställda: ${emp}\n- Leverantörsfakturor & kvitton per månad: ${inv}\n- Omsättning per år: ${fmtRev} Mkr\n- Uppskattad kostnad: ca ${price.toLocaleString("sv-SE")} kr/mån`,
+                }}
                 className="inline-block mt-6 px-8 py-3 rounded-full bg-gradient-gold text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
                 Få en exakt offert
               </Link>
