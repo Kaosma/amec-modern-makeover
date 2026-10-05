@@ -1,29 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import AboutSection from "@/components/AboutSection";
-import WhyUsSection from "@/components/WhyUsSection";
-import TeamSection from "@/components/TeamSection";
-import AwardsSection from "@/components/AwardsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PriceCalculator from "@/components/PriceCalculator";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import RecoWidget from "@/components/RecoWidget";
 
 const Index = () => {
   return (
     <main className="bg-background text-foreground">
       <Navbar />
       <HeroSection />
-      <ServicesSection />
-      <AboutSection />
-      <WhyUsSection />
-      <TeamSection />
-      <AwardsSection />
-      <TestimonialsSection />
-      <PriceCalculator />
-      <ContactSection />
+      <RecoWidget />
       <Footer />
       <CookieConsent />
     </main>

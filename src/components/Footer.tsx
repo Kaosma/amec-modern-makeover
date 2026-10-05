@@ -1,12 +1,13 @@
 import logo from "@/assets/logo_basic.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border/50 py-12 px-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="#">
+        <Link to="/" aria-label="Till startsidan">
           <img src={logo} alt="AMECO Konsult AB" className="h-20 w-auto" />
-        </a>
+        </Link>
         <div className="flex items-center gap-6 text-sm text-muted-foreground">
           <a href="tel:+46884875" className="hover:text-primary transition-colors">
             +46 8 84 87 50

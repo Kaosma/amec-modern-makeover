@@ -1,24 +1,35 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { Link } from "react-router-dom";
+import heroVideo from "@/assets/backgroundaa.mp4.asset.json";
+import heroPoster from "@/assets/hero-bg.jpg";
 
 const features = [
-  { title: "Digital bokföring", desc: "Vi effektiviserar bokföringsprocessen genom att automatisera hanteringen. Vi lägger istället mer tid på dig och ditt företag." },
-  { title: "Effektiv inlämning av underlag", desc: "Underlag skickas löpande in via appen eller mailas till en specifik inbox adress." },
-  { title: "Allt samlat på ett ställe", desc: "Genom att samla allt på ett ställe sparar vi tid och får en ökad spårbarhet och tydlig översikt." },
-  { title: "Fasta priser", desc: "Med personlig engagemang som utgångspunkt paketerar vi och anpassar våra tjänster utifrån era behov till fast pris." },
+  "Digital bokföring",
+  "Allt samlat på ett ställe",
+  "Fasta priser",
 ];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[680px] h-[88vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroPoster}
+          aria-hidden="true"
+        >
+          <source src={heroVideo.url} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
       <div className="container mx-auto relative z-10 pt-32 pb-20 px-4">
-        <div className="max-w-3xl">
+        <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,23 +53,20 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="grid sm:grid-cols-2 gap-4 mt-12"
+            className="flex flex-wrap justify-end gap-3 mt-8"
           >
-            {features.map((f, i) => (
+            {features.map((feature, i) => (
               <motion.div
-                key={f.title}
-                initial={{ opacity: 0, x: -20 }}
+                key={feature}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 + i * 0.1 }}
-                className="flex gap-3"
+                className="flex items-center gap-2 bg-card/70 backdrop-blur-sm border border-border px-4 py-2 rounded-lg"
               >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
                   <Check className="w-3.5 h-3.5 text-primary" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-sm mb-1">{f.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{f.desc}</p>
-                </div>
+                <span className="font-semibold text-sm">{feature}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -69,12 +77,12 @@ export default function HeroSection() {
             transition={{ delay: 1.1 }}
             className="mt-10"
           >
-            <a
-              href="#kontakt"
+            <Link
+              to="/kontakt"
               className="inline-block px-8 py-4 rounded-lg bg-gradient-gold text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
             >
               Boka en konsultation
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
