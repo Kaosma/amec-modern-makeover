@@ -10,6 +10,7 @@ import ServicesPage from "./pages/ServicesPage";
 import AboutPage from "./pages/AboutPage";
 import PricingPage from "./pages/PricingPage";
 import ContactPage from "./pages/ContactPage";
+import FormPage from "./pages/FormPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/om-oss" element={<AboutPage />} />
           <Route path="/prisberakning" element={<PricingPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
+          <Route path="/form" element={<FormPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

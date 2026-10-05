@@ -81,7 +81,7 @@ export default function ServicesSection() {
           className="text-center mt-12"
         >
           <Link
-            to="/kontakt"
+            to="/form" state={{ subject: "Boka konsultation" }}
             className="inline-block px-8 py-4 rounded-lg bg-gradient-gold text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
           >
             Boka en konsultation
@@ -103,7 +103,7 @@ export default function ServicesSection() {
                 </DialogHeader>
                 <DialogFooter className="mt-4">
                   <Button asChild size="lg">
-                    <Link to="/kontakt">Boka första möte</Link>
+                    <Link to="/form" state={{ subject: "Boka konsultation" }}>Boka första möte</Link>
                   </Button>
                 </DialogFooter>
               </>

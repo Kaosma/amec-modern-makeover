@@ -78,7 +78,7 @@ export default function HeroSection() {
             className="mt-10"
           >
             <Link
-              to="/kontakt"
+              to="/form" state={{ subject: "Boka konsultation" }}
               className="inline-block px-8 py-4 rounded-lg bg-gradient-gold text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
             >
               Boka en konsultation
