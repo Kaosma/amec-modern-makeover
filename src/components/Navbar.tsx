@@ -40,7 +40,7 @@ export default function Navbar() {
           ))}
           <li>
             <Link
-              to="/kontakt"
+              to="/form" state={{ subject: "Boka konsultation" }}
               className="text-sm font-medium px-5 py-2.5 rounded-lg bg-gradient-gold text-primary-foreground hover:opacity-90 transition-opacity"
             >
               Boka konsultation
@@ -81,7 +81,7 @@ export default function Navbar() {
               ))}
               <li>
                 <Link
-                  to="/kontakt"
+                  to="/form" state={{ subject: "Boka konsultation" }}
                   onClick={() => setOpen(false)}
                   className="block text-center px-5 py-2.5 rounded-lg bg-gradient-gold text-primary-foreground"
                 >
