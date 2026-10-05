@@ -5,4 +5,4 @@
 - [x] Skapa separata sidor och uppdatera navigationen
 - [x] Slå ihop Om och Varför välja oss till Om oss
 - [x] Förenkla Tjänster och bygg informationsmodaler
-- [ ] Verifiera mobil, dator och sidlänkar
+- [x] Verifiera mobil, dator och sidlänkar

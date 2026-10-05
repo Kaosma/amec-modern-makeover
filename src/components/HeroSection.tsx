@@ -23,7 +23,7 @@ export default function HeroSection() {
           poster={heroPoster}
           aria-hidden="true"
         >
-          <source src={heroVideo.url} type="video/mp4" />
+          <source src={heroVideo.url} type={heroVideo.content_type} />
         </video>
         <div className="absolute inset-0 bg-background/80" />
       </div>
