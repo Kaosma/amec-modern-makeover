@@ -46,18 +46,13 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="mb-5 flex justify-end"
+            className="w-full flex items-center justify-between mb-4"
           >
             <div ref={badgeRef} id="reco--badge-2025" />
+            <p className="text-primary font-medium tracking-widest uppercase text-sm">
+              AMECO Konsult AB
+            </p>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-primary font-medium mb-4 tracking-widest uppercase text-sm"
-          >
-            AMECO Konsult AB
-          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
