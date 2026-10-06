@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -11,6 +12,17 @@ const features = [
 ];
 
 export default function HeroSection() {
+  const badgeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const host = badgeRef.current;
+    if (!host) return;
+    const script = document.createElement("script");
+    script.src = "https://widget.reco.se/badge/2025/6020759.js";
+    script.async = true;
+    host.appendChild(script);
+  }, []);
+
   return (
     <section className="relative min-h-[680px] h-[88vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
