@@ -24,7 +24,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[680px] h-[88vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[680px] h-[88vh] flex flex-col overflow-hidden">
       <div className="absolute inset-0">
         <video
           className="w-full h-full object-cover"
@@ -40,19 +40,19 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="w-full relative z-10 pt-32 pb-20 px-4 md:px-8 lg:px-12">
+      <div className="w-full relative z-10 flex-1 flex flex-col justify-center pt-32 pb-20 px-4 md:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="w-full flex items-center justify-between mb-4"
+        >
+          <div ref={badgeRef} id="reco--badge-2025" />
+          <p className="text-primary font-medium tracking-widest uppercase text-sm">
+            AMECO Konsult AB
+          </p>
+        </motion.div>
         <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="w-full flex items-center justify-between mb-4"
-          >
-            <div ref={badgeRef} id="reco--badge-2025" />
-            <p className="text-primary font-medium tracking-widest uppercase text-sm">
-              AMECO Konsult AB
-            </p>
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
