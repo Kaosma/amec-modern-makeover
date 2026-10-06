@@ -14,7 +14,7 @@ export const services = [
     desc: "Vi tar hand om skatteberäkningar och deklarationer åt er. Vi ser till att moms- och arbetsgivardeklarationer lämnas in löpande.",
   },
   {
-    path: "/booking",
+    path: "/accounting",
     icon: FileText,
     title: "Löpande Bokföring",
     desc: "Vi sköter löpande bokföring åt ert företag för att säkerställa att samtliga transaktioner bokförs.",

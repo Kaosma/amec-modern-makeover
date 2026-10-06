@@ -30,6 +30,19 @@ export default function HeroSection() {
 
       <div className="w-full relative z-10 pt-32 pb-20 px-4 md:px-8 lg:px-12">
         <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="w-full max-w-xs mb-5"
+          >
+            <iframe
+              src="https://widget.reco.se/v2/venues/6020759/horizontal/small?inverted=false&border=true&lang=sv"
+              title="AMECO Konsult AB - Omdömen på Reco"
+              height="27"
+              style={{ width: "100%", border: 0, display: "block", overflow: "hidden" }}
+            />
+          </motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
