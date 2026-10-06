@@ -24,7 +24,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[680px] h-[88vh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[680px] min-h-[88vh] flex flex-col overflow-hidden">
       <div className="absolute inset-0">
         <video
           className="w-full h-full object-cover"
@@ -65,9 +65,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-            className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl"
+className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl line-clamp-3"
           >
-            Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål
+            Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål.
           </motion.p>
 
           <motion.div
