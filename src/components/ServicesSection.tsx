@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "./useScrollAnimation";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import {
@@ -11,7 +11,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-const services = [
+export const services = [
   {
     icon: BarChart3,
     title: "Budgetplanering & Rådgivning",
@@ -37,9 +37,23 @@ const services = [
 export default function ServicesSection() {
   const { ref, isInView } = useScrollAnimation();
   const [selectedService, setSelectedService] = useState<(typeof services)[number] | null>(null);
+  const [params, setParams] = useSearchParams();
+
+  useEffect(() => {
+    const idx = params.get("tjanst");
+    if (idx !== null && services[Number(idx)]) {
+      setSelectedService(services[Number(idx)]);
+      document.getElementById("tjanster")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [params]);
+
+  const close = () => {
+    setSelectedService(null);
+    if (params.has("tjanst")) setParams({}, { replace: true });
+  };
 
   return (
-    <section id="tjanster" className="section-padding bg-gradient-dark" ref={ref}>
+    <section id="tjanster" className="section-padding bg-gradient-dark scroll-mt-20" ref={ref}>
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,7 +67,7 @@ export default function ServicesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((s, i) => (
             <motion.button
               type="button"
@@ -88,7 +102,7 @@ export default function ServicesSection() {
           </Link>
         </motion.div>
 
-        <Dialog open={selectedService !== null} onOpenChange={(open) => !open && setSelectedService(null)}>
+        <Dialog open={selectedService !== null} onOpenChange={(open) => !open && close()}>
           <DialogContent className="max-w-xl">
             {selectedService && (
               <>

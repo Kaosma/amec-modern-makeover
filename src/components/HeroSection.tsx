@@ -5,8 +5,8 @@ import heroVideo from "@/assets/backgroundaa.mp4.asset.json";
 import heroPoster from "@/assets/hero-bg.jpg";
 
 const features = [
-  "Digital bokföring",
   "Allt samlat på ett ställe",
+  "Digital bokföring",
   "Fasta priser",
 ];
 
@@ -28,7 +28,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="container mx-auto relative z-10 pt-32 pb-20 px-4">
+      <div className="w-full relative z-10 pt-32 pb-20 px-4 md:px-8 lg:px-12">
         <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -42,12 +42,18 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display leading-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6"
           >
-            Redovisning med{" "}
-            <span className="text-gradient-gold">personligt stöd</span>{" "}
-            genom hela resan mot ditt mål
+            <span className="text-gradient-gold">Personlig redovisning</span> anpassad efter dina behov – för att hjälpa ditt företag nå sina mål
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 }}
+            className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl"
+          >
+            Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
