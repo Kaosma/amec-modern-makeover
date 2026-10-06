@@ -24,7 +24,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[680px] h-[88vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[680px] h-[88vh] flex flex-col overflow-hidden">
       <div className="absolute inset-0">
         <video
           className="w-full h-full object-cover"
