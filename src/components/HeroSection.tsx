@@ -40,19 +40,19 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="w-full relative z-10 pt-32 pb-20 px-4 md:px-8 lg:px-12">
+      <div className="w-full relative z-10 pt-44 pb-20 px-4 md:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="w-full flex items-center justify-between mb-6"
+        >
+          <div ref={badgeRef} id="reco--badge-2025" />
+          <p className="text-primary font-medium tracking-widest uppercase text-sm">
+            AMECO Konsult AB
+          </p>
+        </motion.div>
         <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="w-full flex items-center justify-between mb-4"
-          >
-            <div ref={badgeRef} id="reco--badge-2025" />
-            <p className="text-primary font-medium tracking-widest uppercase text-sm">
-              AMECO Konsult AB
-            </p>
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
