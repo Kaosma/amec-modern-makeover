@@ -11,6 +11,8 @@ import PricingPage from "./pages/PricingPage";
 import ContactPage from "./pages/ContactPage";
 import FormPage from "./pages/FormPage";
 import NotFound from "./pages/NotFound";
+import ServicePage from "./pages/ServicePage";
+import { services } from "@/data/services";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,9 @@ const App = () => (
           <Route path="/prisberakning" element={<PricingPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
           <Route path="/form" element={<FormPage />} />
+          {services.map((service) => (
+            <Route key={service.path} path={service.path} element={<ServicePage service={service} />} />
+          ))}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

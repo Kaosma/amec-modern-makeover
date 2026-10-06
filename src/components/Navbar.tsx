@@ -3,15 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/logo_basic.png";
-import { services } from "./ServicesSection";
+import { services } from "@/data/services";
 
 const links = [
   { label: "Om oss", href: "/om-oss" },
   { label: "Prisberäkning", href: "/prisberakning" },
   { label: "Kontakt", href: "/kontakt" },
 ];
-
-const serviceHref = (i: number) => `/?tjanst=${i}`;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -48,10 +46,10 @@ export default function Navbar() {
                   className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-72"
                 >
                   <div className="rounded-xl bg-primary/90 backdrop-blur-md shadow-xl p-2">
-                    {services.map((s, i) => (
+                    {services.map((s) => (
                       <li key={s.title}>
                         <Link
-                          to={serviceHref(i)}
+                          to={s.path}
                           onClick={() => setSvcOpen(false)}
                           className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
                         >
@@ -101,8 +99,8 @@ export default function Navbar() {
               <li>
                 <p className="text-xs uppercase tracking-widest text-primary py-2">Tjänster</p>
                 <div className="rounded-xl bg-primary/90 p-2">
-                  {services.map((s, i) => (
-                    <Link key={s.title} to={serviceHref(i)} onClick={() => setOpen(false)}
+                  {services.map((s) => (
+                    <Link key={s.title} to={s.path} onClick={() => setOpen(false)}
                       className="block px-3 py-2.5 rounded-lg text-sm text-primary-foreground hover:bg-primary-foreground/10">
                       {s.title}
                     </Link>
