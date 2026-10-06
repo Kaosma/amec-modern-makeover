@@ -1,5 +1,6 @@
 import logo from "@/assets/logo_basic.png";
 import { Link } from "react-router-dom";
+import SocialLinks from "./SocialLinks";
 
 export default function Footer() {
   return (
@@ -8,13 +9,11 @@ export default function Footer() {
         <Link to="/" aria-label="Till startsidan">
           <img src={logo} alt="AMECO Konsult AB" className="h-20 w-auto" />
         </Link>
-        <div className="flex items-center gap-6 text-sm text-muted-foreground">
-          <a href="tel:+46884875" className="hover:text-primary transition-colors">
-            +46 8 84 87 50
-          </a>
-          <a href="mailto:info@amecokonsult.se" className="hover:text-primary transition-colors">
-            info@amecokonsult.se
-          </a>
+        <div className="flex flex-col sm:flex-row items-center gap-5">
+          <Link to="/kontakt" className="px-6 py-3 rounded-lg bg-gradient-gold text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
+            Kontakta oss
+          </Link>
+          <SocialLinks />
         </div>
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} AMECO Konsult AB. Alla rättigheter förbehållna.

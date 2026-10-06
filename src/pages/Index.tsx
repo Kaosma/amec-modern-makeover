@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import HighlightsSection from "@/components/HighlightsSection";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import RecoWidget from "@/components/RecoWidget";
@@ -9,6 +11,8 @@ const Index = () => {
     <main className="bg-background text-foreground">
       <Navbar />
       <HeroSection />
+      <ServicesSection />
+      <HighlightsSection />
       <RecoWidget />
       <Footer />
       <CookieConsent />

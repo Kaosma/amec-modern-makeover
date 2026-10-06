@@ -41,14 +41,27 @@ export default function AwardsSection() {
                   för 2024.
                 </p>
                 <p>
-                  Över 500 nomineringar inkom under 2024. Isabella blev även nominerad 2025
-                  och valdes ut på top 30.
+                  Varje år presenterar Ledarna en lista med 75 framstående unga chefer som
+                  utmärkt sig genom sitt ledarskap.
+                </p>
+                <p>
+                  Över 500 nomineringar inkom under 2024. Juryn tog ställning till 100
+                  kandidater som valdes ut av rekryteringsföretaget Wes och valde ut de 75 som
+                  placerade sig på den slutliga listan, varav Isabella var en av dem. Isabella
+                  blev även nominerad 2025 och valdes ut på top 30.
                 </p>
                 <p>
                   Framtidens kvinnliga ledare uppmärksammar chefer och ledare som visar att
                   ledarskap handlar om att uppnå goda resultat genom ett transparent och
-                  inkluderande ledarskap.
+                  inkluderande ledarskap. Ledarna chefsorganisation bedömer dessa personer
+                  enligt tre kriterier: ledarskap, resultat och potential.
                 </p>
+                <p>
+                  Genom sitt ansvar för att utveckla och leda en verksamhet eller driva en
+                  samhällsförändring, visar de upp ett hållbart och nytänkande ledarskap som
+                  leder verksamheten framåt.
+                </p>
+
               </div>
             </div>
           </div>

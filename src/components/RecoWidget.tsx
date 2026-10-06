@@ -7,12 +7,12 @@ export default function RecoWidget() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="container mx-auto max-w-5xl"
+        className="w-full"
       >
         <div className="text-center mb-7">
           <p className="text-primary tracking-widest uppercase text-sm mb-2">Omdömen</p>
           <h2 id="reco-heading" className="text-2xl md:text-4xl font-display">
-            Vad våra kunder säger
+            Vad våra kunder säger om oss
           </h2>
         </div>
         <iframe
