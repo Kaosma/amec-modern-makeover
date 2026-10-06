@@ -6,3 +6,4 @@
 - [x] Slå ihop Om och Varför välja oss till Om oss
 - [x] Förenkla Tjänster och bygg informationsmodaler
 - [x] Verifiera mobil, dator och sidlänkar
+- [x] Ersätt tjänstemodaler med fyra egna sidor och verifiera länkarna.
