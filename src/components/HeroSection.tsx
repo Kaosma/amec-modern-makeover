@@ -28,6 +28,8 @@ export default function HeroSection() {
           muted
           loop
           playsInline
+          preload="auto"
+          poster={heroPoster}
           aria-hidden="true"
         >
           <source src={heroVideo.url} type={heroVideo.content_type} />
