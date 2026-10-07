@@ -35,6 +35,14 @@ export default function PackagesPage() {
             className="container mx-auto max-w-5xl grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-16"
           >
             <div>
+              <img
+                src={entry.image}
+                alt={entry.title}
+                loading="lazy"
+                width={1200}
+                height={900}
+                className="rounded-2xl w-full aspect-[4/3] object-cover mb-6 shadow-lg"
+              />
               <h2 className="text-2xl md:text-3xl font-display leading-tight mb-5">{entry.title}</h2>
               <p className="text-primary text-sm leading-relaxed border-l-2 border-primary pl-4">{entry.requirement}</p>
             </div>

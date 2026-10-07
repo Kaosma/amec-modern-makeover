@@ -1,6 +1,11 @@
+import gastroImage from "@/assets/package-gastro.jpg";
+import soloImage from "@/assets/package-solo.jpg";
+import entreprenadImage from "@/assets/package-entreprenad.jpg";
+
 export const packages = [
   {
     id: "solo",
+    image: soloImage,
     name: "Solo",
     title: "Solo – fullt fokus på ditt företag",
     requirement: "För aktiebolag med upp till 1 anställd, 20 verifikationer i månaden och upp till 2 Mkr i årsomsättning.",
@@ -13,6 +18,7 @@ export const packages = [
   },
   {
     id: "gastro",
+    image: gastroImage,
     name: "Gastro",
     title: "Gastro – redovisning för restaurang, bar & café",
     requirement: "För aktiebolag inom restaurang, café eller bar.",
@@ -26,6 +32,7 @@ export const packages = [
   },
   {
     id: "entreprenad",
+    image: entreprenadImage,
     name: "Entreprenad",
     title: "Entreprenad – redovisning för de som bygger",
     requirement: "För aktiebolag med verksamhet inom bygg.",

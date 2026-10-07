@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
@@ -14,9 +14,6 @@ export default function ServicePage({ service }: { service: (typeof services)[nu
       <Navbar />
       <section className="section-padding bg-gradient-dark pt-36 md:pt-44 min-h-[65vh]">
         <div className="container mx-auto max-w-4xl">
-          <Button asChild variant="link" className="px-0 mb-8">
-            <Link to="/#tjanster"><ArrowLeft className="mr-2 h-4 w-4" />Alla tjänster</Link>
-          </Button>
           <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10">
             <Icon className="h-7 w-7 text-primary" aria-hidden="true" />
           </div>

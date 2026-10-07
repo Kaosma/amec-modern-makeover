@@ -5,7 +5,7 @@ export default function AboutSection() {
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <section id="om" className="section-padding" ref={ref}>
+    <section id="om" className="section-padding pt-32 md:pt-44" ref={ref}>
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div

@@ -98,15 +98,25 @@ export default function Navbar() {
           >
             <ul className="flex flex-col p-4 gap-2">
               <li>
-                <p className="text-xs uppercase tracking-widest text-primary py-2">Tjänster</p>
-                <div className="rounded-xl bg-primary/90 p-2">
-                  {services.map((s) => (
-                    <Link key={s.title} to={s.path} onClick={() => setOpen(false)}
-                      className="block px-3 py-2.5 rounded-lg text-sm text-primary-foreground hover:bg-primary-foreground/10">
-                      {s.title}
-                    </Link>
-                  ))}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setSvcOpen((v) => !v)}
+                  aria-expanded={svcOpen}
+                  className="flex w-full items-center justify-between text-xs uppercase tracking-widest text-primary py-2"
+                >
+                  Tjänster
+                  <ChevronDown className={`w-4 h-4 transition-transform ${svcOpen ? "rotate-180" : ""}`} />
+                </button>
+                {svcOpen && (
+                  <div className="rounded-xl bg-primary/90 p-2">
+                    {services.map((s) => (
+                      <Link key={s.title} to={s.path} onClick={() => setOpen(false)}
+                        className="block px-3 py-2.5 rounded-lg text-sm text-primary-foreground hover:bg-primary-foreground/10">
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
               {links.map((l) => (
                 <li key={l.href}>
