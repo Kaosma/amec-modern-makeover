@@ -12,6 +12,7 @@ import ContactPage from "./pages/ContactPage";
 import FormPage from "./pages/FormPage";
 import NotFound from "./pages/NotFound";
 import ServicePage from "./pages/ServicePage";
+import PackagesPage from "./pages/PackagesPage";
 import { services } from "@/data/services";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/tjanster" element={<Navigate to="/#tjanster" replace />} />
           <Route path="/om-oss" element={<AboutPage />} />
           <Route path="/prisberakning" element={<PricingPage />} />
+          <Route path="/vara-paket" element={<PackagesPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
           <Route path="/form" element={<FormPage />} />
           {services.map((service) => (

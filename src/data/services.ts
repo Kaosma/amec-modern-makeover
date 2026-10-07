@@ -26,11 +26,9 @@ export const services = [
     desc: "Vid årets slut görs en summering av samtliga transaktioner i ett bokslut som sedan lämnas in till bolagsverket.",
   },
   {
-    path: "/ledarskap",
+    path: "/leadership",
     icon: Users,
-    title: "Ledarskapskurser och Teambuildning",
-    desc: "Ledarskapskurser och teambuildning.",
+    title: "Ledarskap & Teambuildning",
+    desc: "Vi erbjuder ledarskapskurser och teambuildningövningar för att stärka din roll som ledare och skapa sammansvetsade grupper.",
   },
 ];
-
-export const homepageServices = services.filter((service) => service.path !== "/ledarskap");
