@@ -7,3 +7,7 @@
 - [x] Förenkla Tjänster och bygg informationsmodaler
 - [x] Verifiera mobil, dator och sidlänkar
 - [x] Ersätt tjänstemodaler med fyra egna sidor och verifiera länkarna.
+- [x] Visa hela ingressen med bredare textyta.
+- [x] Lägg till ledarskap i tjänstemenyn och övriga tjänster, inte på startsidan.
+- [x] Kontrollera och anpassa media på mycket breda skärmar.
+- [x] Lägg till Våra paket med bifogad text och utan priser.

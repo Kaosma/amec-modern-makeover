@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "./useScrollAnimation";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { services } from "@/data/services";
+import { homepageServices } from "@/data/services";
 
 export default function ServicesSection() {
   const { ref, isInView } = useScrollAnimation();
@@ -23,7 +23,7 @@ export default function ServicesSection() {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
-          {services.map((s, i) => (
+          {homepageServices.map((s, i) => (
             <motion.article
               key={s.title}
               initial={{ opacity: 0, y: 40 }}

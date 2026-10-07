@@ -1,4 +1,4 @@
-import { BarChart3, DollarSign, FileText, TrendingUp } from "lucide-react";
+import { BarChart3, DollarSign, FileText, TrendingUp, Users } from "lucide-react";
 
 export const services = [
   {
@@ -25,4 +25,12 @@ export const services = [
     title: "Bokslut och Årsredovisning",
     desc: "Vid årets slut görs en summering av samtliga transaktioner i ett bokslut som sedan lämnas in till bolagsverket.",
   },
+  {
+    path: "/ledarskap",
+    icon: Users,
+    title: "Ledarskapskurser och Teambuildning",
+    desc: "Vi hjälper er med ledarskapskurser. Vi går igenom och tar fram verktyg och redskap som behövs i din roll som ledare. Vi går även igenom de olika ledarskapsroller som passar till en specifik organisation. Vi hjälper er med teambuildningövningar. En bra sammansvetsad grupp resulterar till bra tillväxt. Vi hjälper er med olika övningar för att stärka gruppen.",
+  },
 ];
+
+export const homepageServices = services.filter((service) => service.path !== "/ledarskap");
