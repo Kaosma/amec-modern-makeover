@@ -5,11 +5,7 @@ import { Link } from "react-router-dom";
 import heroVideo from "@/assets/backgroundaa.mp4.asset.json";
 import heroPoster from "@/assets/hero-bg.jpg";
 
-const features = [
-  "Allt samlat på ett ställe",
-  "Digital bokföring",
-  "Fasta priser",
-];
+const features = ["Allt samlat på ett ställe", "Digital bokföring", "Fasta priser"];
 
 export default function HeroSection() {
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -32,7 +28,6 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          poster={heroPoster}
           aria-hidden="true"
         >
           <source src={heroVideo.url} type={heroVideo.content_type} />
@@ -48,9 +43,7 @@ export default function HeroSection() {
           className="w-full flex items-center justify-between mb-4"
         >
           <div ref={badgeRef} id="reco--badge-2025" />
-          <p className="text-primary font-medium tracking-widest uppercase text-sm">
-            AMECO Konsult AB
-          </p>
+          <p className="text-primary font-medium tracking-widest uppercase text-sm">AMECO Konsult AB</p>
         </motion.div>
         <div className="ml-auto w-full max-w-6xl text-right flex flex-col items-end">
           <motion.h1
@@ -59,7 +52,8 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="max-w-3xl text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6"
           >
-            <span className="text-gradient-gold">Personlig redovisning</span> anpassad efter dina behov – för att hjälpa ditt företag nå sina mål
+            <span className="text-gradient-gold">Personlig redovisning</span> anpassad efter dina behov – för att hjälpa
+            ditt företag nå sina mål
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +61,9 @@ export default function HeroSection() {
             transition={{ delay: 0.45 }}
             className="w-full max-w-5xl text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed"
           >
-            Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål.
+            Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta
+            priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre
+            beslutsunderlag och hjälper ditt företag att nå sina mål.
           </motion.p>
 
           <motion.div
@@ -99,7 +95,8 @@ export default function HeroSection() {
             className="mt-10"
           >
             <Link
-              to="/form" state={{ subject: "Boka konsultation" }}
+              to="/form"
+              state={{ subject: "Boka konsultation" }}
               className="inline-block px-8 py-4 rounded-lg bg-gradient-gold text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
             >
               Boka en konsultation
