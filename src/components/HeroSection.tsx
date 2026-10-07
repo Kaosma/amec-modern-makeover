@@ -65,7 +65,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-            className="w-full text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed"
+            className="w-full max-w-5xl text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed"
           >
             Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål.
           </motion.p>
