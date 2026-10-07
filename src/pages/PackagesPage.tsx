@@ -12,7 +12,7 @@ export default function PackagesPage() {
   return (
     <main>
       <Navbar />
-      <header className="section-padding bg-gradient-dark pt-40 md:pt-44 pb-12 md:pb-16">
+      <header className="section-padding bg-gradient-dark side-page-top pb-12 md:pb-16">
         <div className="container mx-auto max-w-5xl">
           <p className="text-primary uppercase text-sm mb-3">AMECO Konsult AB</p>
           <h1 className="text-4xl md:text-5xl font-display mb-8">Våra paket</h1>

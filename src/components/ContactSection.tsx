@@ -8,7 +8,7 @@ const cardCls = "flex gap-4 items-start p-6 rounded-2xl bg-card/90 backdrop-blur
 
 export default function ContactSection() {
   return (
-    <section id="kontakt" className="relative section-padding pt-40 md:pt-44 min-h-[80vh] overflow-hidden">
+    <section id="kontakt" className="relative section-padding side-page-top min-h-[80vh] overflow-hidden">
       <div className="absolute inset-0 bg-background" aria-hidden="true">
         <img src={contactBg.url} alt="" className="page-background-media w-full h-full object-cover" />
         <div className="absolute inset-0 bg-background/75" />

@@ -48,7 +48,7 @@ export default function InquiryForm() {
     "w-full px-4 py-3 rounded-xl bg-card border border-border/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors text-foreground";
 
   return (
-    <section className="section-padding pt-36">
+    <section className="section-padding side-page-top">
       <div className="container mx-auto max-w-2xl">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <p className="text-primary tracking-widest uppercase text-sm mb-3">Formulär</p>
