@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroVideo from "@/assets/backgroundaa.mp4";
-import heroPoster from "@/assets/hero-bg.jpg";
+import heroPoster from "@/assets/backgroundposter.png";
 
 const features = ["Allt samlat på ett ställe", "Digital bokföring", "Fasta priser"];
 
