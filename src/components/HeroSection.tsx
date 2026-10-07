@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/backgroundaa.mp4.asset.json";
+import heroVideo from "@/assets/backgroundaa.mp4";
 import heroPoster from "@/assets/hero-bg.jpg";
 
 const features = ["Allt samlat på ett ställe", "Digital bokföring", "Fasta priser"];

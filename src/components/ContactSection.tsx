@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
-import contactBg from "@/assets/ameco_contact.jpg.asset.json";
+import contactBg from "@/assets/ameco_contact.jpg";
 import SocialLinks from "./SocialLinks";
 
 const cardCls = "flex gap-4 items-start p-6 rounded-2xl bg-card/90 backdrop-blur-sm border border-border/50";
