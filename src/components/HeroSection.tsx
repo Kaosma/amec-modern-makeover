@@ -40,7 +40,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="container mx-auto relative z-10 flex-1 flex flex-col justify-center pt-32 pb-20 px-4 md:px-8 lg:px-12">
+      <div className="w-full relative z-10 flex-1 flex flex-col justify-center pt-32 pb-20 px-4 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
