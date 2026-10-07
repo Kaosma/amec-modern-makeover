@@ -25,9 +25,9 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-[680px] min-h-[88vh] flex flex-col overflow-hidden">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-background">
         <video
-          className="w-full h-full object-cover"
+          className="page-background-media w-full h-full object-cover"
           autoPlay
           muted
           loop
@@ -52,12 +52,12 @@ export default function HeroSection() {
             AMECO Konsult AB
           </p>
         </motion.div>
-        <div className="ml-auto max-w-3xl text-right flex flex-col items-end">
+        <div className="ml-auto w-full max-w-6xl text-right flex flex-col items-end">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6"
+            className="max-w-3xl text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6"
           >
             <span className="text-gradient-gold">Personlig redovisning</span> anpassad efter dina behov – för att hjälpa ditt företag nå sina mål
           </motion.h1>
@@ -65,7 +65,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl line-clamp-3"
+            className="w-full text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed"
           >
             Vi gör redovisning enkelt, tryggt och värdeskapande. Med digitala arbetssätt, personlig service och fasta priser förenklar vi din ekonomi och frigör tid för din kärnverksamhet. Vi ger dig bättre kontroll, bättre beslutsunderlag och hjälper ditt företag att nå sina mål.
           </motion.p>

@@ -1,4 +1,4 @@
-import { BarChart3, DollarSign, FileText, TrendingUp } from "lucide-react";
+import { BarChart3, DollarSign, FileText, TrendingUp, Users } from "lucide-react";
 
 export const services = [
   {
@@ -25,4 +25,12 @@ export const services = [
     title: "Bokslut och Årsredovisning",
     desc: "Vid årets slut görs en summering av samtliga transaktioner i ett bokslut som sedan lämnas in till bolagsverket.",
   },
+  {
+    path: "/ledarskap",
+    icon: Users,
+    title: "Ledarskapskurser och Teambuildning",
+    desc: "Ledarskapskurser och teambuildning.",
+  },
 ];
+
+export const homepageServices = services.filter((service) => service.path !== "/ledarskap");

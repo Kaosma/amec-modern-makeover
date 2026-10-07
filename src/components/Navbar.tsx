@@ -7,6 +7,7 @@ import { services } from "@/data/services";
 
 const links = [
   { label: "Om oss", href: "/om-oss" },
+  { label: "Våra paket", href: "/vara-paket" },
   { label: "Prisberäkning", href: "/prisberakning" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -27,7 +28,7 @@ export default function Navbar() {
           <img src={logo} alt="AMECO Konsult AB" className="h-28 w-auto" />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
           <li className="relative" onMouseEnter={() => setSvcOpen(true)} onMouseLeave={() => setSvcOpen(false)}>
             <button
               type="button"
@@ -82,7 +83,7 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground" aria-label="Meny">
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Meny">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -93,7 +94,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border/50"
+            className="lg:hidden glass border-t border-border/50 max-h-[calc(100dvh-5rem)] overflow-y-auto"
           >
             <ul className="flex flex-col p-4 gap-2">
               <li>
