@@ -55,7 +55,7 @@ export default function PriceCalculator() {
   const fmtRev = rev.toLocaleString("sv-SE", { maximumFractionDigits: 1 });
 
   return (
-    <section id="prisberakning" className="section-padding pt-40 md:pt-44 bg-gradient-dark" ref={ref}>
+    <section id="prisberakning" className="section-padding side-page-top bg-gradient-dark" ref={ref}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

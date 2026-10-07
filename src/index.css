@@ -96,6 +96,18 @@
     @apply py-20 md:py-32 px-4 md:px-8;
   }
 
+  /* Undersidor: 6rem luft under headern på små skärmar (≤767px), 11rem därovan. */
+  .section-padding.side-page-top {
+    padding-top: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding.side-page-top {
+      padding-top: 11rem;
+    }
+  }
+
+
   .price-range {
     -webkit-appearance: none;
     appearance: none;
