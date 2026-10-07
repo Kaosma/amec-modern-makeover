@@ -13,6 +13,17 @@ export default function HighlightsSection() {
   return (
     <section className="py-14 md:py-20 px-4">
       <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          className="text-center mb-10 md:mb-14"
+        >
+          <h2 className="text-3xl md:text-5xl font-display">
+            Kom igång <span className="text-gradient-gold">redan idag</span>
+          </h2>
+        </motion.div>
+
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {items.map((it, i) => (
             <motion.div
