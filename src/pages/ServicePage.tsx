@@ -19,7 +19,12 @@ export default function ServicePage({ service }: { service: (typeof services)[nu
           </div>
           <p className="text-primary uppercase text-sm mb-3">AMECO Konsult AB</p>
           <h1 className="text-3xl md:text-5xl font-display leading-tight mb-8">{service.title}</h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-10">{service.desc}</p>
+          <div className="mb-10 max-w-3xl space-y-4">
+            {service.full.map((paragraph) => (
+              <p key={paragraph} className="text-lg md:text-xl text-muted-foreground leading-relaxed">{paragraph}</p>
+            ))}
+          </div>
+
           <Button asChild size="lg">
             <Link to="/form" state={{ subject: "Boka konsultation" }}>Boka första möte<ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
