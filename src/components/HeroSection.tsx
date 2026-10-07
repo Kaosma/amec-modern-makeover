@@ -20,24 +20,25 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[680px] min-h-[88vh] flex flex-col overflow-hidden">
-      <div className="absolute inset-0 bg-background">
+    <section className="relative flex min-h-[680px] min-h-[88vh] w-full flex-col overflow-hidden">
+      <div className="absolute inset-0 z-0 w-full overflow-hidden bg-background">
         <video
-          className="page-background-media w-full h-full object-cover object-center"
+          className="absolute inset-0 block h-full min-h-full w-full min-w-full max-w-none object-cover object-center"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
           poster={heroPoster}
+          preload="auto"
           aria-hidden="true"
         >
-          <source src={heroVideo.url} type={heroVideo.content_type} />
+          <source src={heroVideo} type="video/mp4" />
         </video>
+
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="w-full relative z-10 flex-1 flex flex-col justify-center pt-32 pb-20 px-4 md:px-8 lg:px-12">
+      <div className="relative z-10 flex w-full flex-1 flex-col justify-center px-4 pt-32 pb-20 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
