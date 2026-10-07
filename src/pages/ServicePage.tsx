@@ -12,7 +12,7 @@ export default function ServicePage({ service }: { service: (typeof services)[nu
   return (
     <main>
       <Navbar />
-      <section className="section-padding bg-gradient-dark pt-36 md:pt-44 min-h-[65vh]">
+      <section className="section-padding bg-gradient-dark pt-40 md:pt-44 min-h-[65vh]">
         <div className="container mx-auto max-w-4xl">
           <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10">
             <Icon className="h-7 w-7 text-primary" aria-hidden="true" />

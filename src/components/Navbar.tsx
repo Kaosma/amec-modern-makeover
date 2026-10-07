@@ -102,7 +102,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => setSvcOpen((v) => !v)}
                   aria-expanded={svcOpen}
-                  className="flex w-full items-center justify-between text-xs uppercase tracking-widest text-primary py-2"
+                  className="flex w-full items-center justify-between text-foreground/80 hover:text-primary transition-colors py-2"
                 >
                   Tjänster
                   <ChevronDown className={`w-4 h-4 transition-transform ${svcOpen ? "rotate-180" : ""}`} />
