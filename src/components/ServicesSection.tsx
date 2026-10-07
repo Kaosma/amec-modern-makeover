@@ -29,17 +29,20 @@ export default function ServicesSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="group flex h-full flex-col p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                 <s.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold mb-3">{s.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
-              <Button asChild variant="link" className="mt-5 p-0">
-                <Link to={s.path} aria-label={`Läs mer om ${s.title}`}>Läs mer</Link>
-              </Button>
+              <div className="mt-auto pt-5">
+                <Button asChild variant="link" className="p-0">
+                  <Link to={s.path} aria-label={`Läs mer om ${s.title}`}>Läs mer</Link>
+                </Button>
+              </div>
             </motion.article>
+
           ))}
         </div>
 

@@ -29,3 +29,20 @@ describe("service visibility", () => {
     expect(homepageServices.map((entry) => entry.path)).toEqual(["/counseling", "/declaration", "/accounting", "/reporting"]);
   });
 });
+
+describe("homepage service descriptions", () => {
+  const openings: Record<string, string> = {
+    "/counseling": "En bra budget handlar om mer än siffror – den skapar kontroll, framförhållning och bättre förutsättningar för att nå företagets mål.",
+    "/declaration": "Vi hjälper er att hantera företagets skatter och deklarationer korrekt och i rätt tid.",
+    "/accounting": "Vi tar hand om företagets löpande bokföring och ser till att affärshändelser registreras korrekt, strukturerat och i rätt tid.",
+    "/reporting": "När räkenskapsåret är slut sammanställer och stämmer vi av företagets ekonomi för att upprätta ett korrekt bokslut.",
+  };
+  for (const [path, opening] of Object.entries(openings)) {
+    it(`describes ${path} with the supplied copy`, () => {
+      expect(homepageServices.find((entry) => entry.path === path)?.desc.startsWith(opening)).toBe(true);
+    });
+  }
+  it("splits each description over at most three lines of card text", () => {
+    for (const entry of homepageServices) expect(entry.desc.length).toBeLessThan(340);
+  });
+});
