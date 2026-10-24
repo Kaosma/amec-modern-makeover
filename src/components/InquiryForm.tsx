@@ -4,7 +4,13 @@ import { useLocation } from "react-router-dom";
 import { Mail, Check } from "lucide-react";
 import { z } from "zod";
 
-const helpOptions = ["Löpande redovisning", "Lön", "Bokslut", "Deklaration", "Annat"];
+const helpOptions = [
+  "Löpande redovisning",
+  "Lön",
+  "Bokslut",
+  "Deklaration",
+  "Annat",
+];
 
 const schema = z.object({
   name: z.string().trim().min(1, "Namn krävs").max(100),
@@ -13,86 +19,254 @@ const schema = z.object({
   message: z.string().trim().min(1, "Meddelande krävs").max(2000),
 });
 
+type InquiryFormData = z.infer<typeof schema>;
+
+type LocationState = {
+  subject?: string;
+  message?: string;
+};
+
 export default function InquiryForm() {
-  const { state } = useLocation() as { state?: { subject?: string; message?: string } };
-  const [form, setForm] = useState({
+  const { state } = useLocation() as {
+    state?: LocationState;
+  };
+
+  const [form, setForm] = useState<InquiryFormData>({
     name: "",
     email: "",
     subject: state?.subject ?? "",
     message: state?.message ?? "",
   });
+
   const [help, setHelp] = useState<string[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const change = (k: string, v: string) => {
-    setForm((p) => ({ ...p, [k]: v }));
-    if (errors[k]) setErrors((p) => ({ ...p, [k]: "" }));
+  const change = (key: keyof InquiryFormData, value: string) => {
+    setForm((previous) => ({
+      ...previous,
+      [key]: value,
+    }));
+
+    if (errors[key]) {
+      setErrors((previous) => ({
+        ...previous,
+        [key]: "",
+      }));
+    }
   };
-  const toggle = (o: string) => setHelp((p) => (p.includes(o) ? p.filter((x) => x !== o) : [...p, o]));
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const r = schema.safeParse(form);
-    if (!r.success) {
-      const fe: Record<string, string> = {};
-      r.error.errors.forEach((er) => er.path[0] && (fe[er.path[0] as string] = er.message));
-      setErrors(fe);
+  const toggle = (option: string) => {
+    setHelp((previous) =>
+      previous.includes(option)
+        ? previous.filter((item) => item !== option)
+        : [...previous, option]
+    );
+  };
+
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const result = schema.safeParse(form);
+
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+
+      result.error.errors.forEach((error) => {
+        const field = error.path[0];
+
+        if (field) {
+          fieldErrors[String(field)] = error.message;
+        }
+      });
+
+      setErrors(fieldErrors);
       return;
     }
+
     setErrors({});
-    setSubmitted(true);
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-inquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...result.data,
+          help,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          data?.error ||
+          "Kunde inte skicka meddelandet. Försök igen senare."
+        );
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Inquiry submission error:", error);
+
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Något gick fel när meddelandet skulle skickas. Försök igen eller kontakta oss via e-post."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputCls =
-    "w-full px-4 py-3 rounded-xl bg-card border border-border/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors text-foreground";
+    "w-full rounded-xl border border-border/50 bg-card px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
 
   return (
     <section className="section-padding side-page-top">
       <div className="container mx-auto max-w-2xl">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <p className="text-primary tracking-widest uppercase text-sm mb-3">Formulär</p>
-          <h1 className="text-3xl md:text-5xl font-display">
-            {form.subject || <>Skicka en <span className="text-gradient-gold">förfrågan</span></>}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12 text-center"
+        >
+          <p className="mb-3 text-sm uppercase tracking-widest text-primary">
+            Formulär
+          </p>
+
+          <h1 className="text-3xl font-display md:text-5xl">
+            {form.subject || (
+              <>
+                Skicka en{" "}
+                <span className="text-gradient-gold">förfrågan</span>
+              </>
+            )}
           </h1>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
           {submitted ? (
-            <div className="rounded-2xl bg-card border border-primary/30 p-12 text-center">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-8 h-8 text-primary" />
+            <div className="rounded-2xl border border-primary/30 bg-card p-12 text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                <Mail className="h-8 w-8 text-primary" />
               </div>
-              <h2 className="text-xl font-display font-semibold mb-2">Tack för ditt meddelande!</h2>
-              <p className="text-muted-foreground">Vi återkommer så snart vi kan.</p>
+
+              <h2 className="mb-2 text-xl font-display font-semibold">
+                Tack för ditt meddelande!
+              </h2>
+
+              <p className="text-muted-foreground">
+                Vi har tagit emot din förfrågan och återkommer så snart vi kan.
+              </p>
             </div>
           ) : (
             <form onSubmit={submit} className="space-y-5" noValidate>
               {[
-                { key: "name", label: "Namn", type: "text" },
-                { key: "email", label: "E-post", type: "email" },
-                { key: "subject", label: "Ämne", type: "text" },
-              ].map((f) => (
-                <div key={f.key}>
-                  <label htmlFor={f.key} className="block text-sm font-medium mb-1.5">{f.label} *</label>
-                  <input id={f.key} type={f.type} value={form[f.key as keyof typeof form]}
-                    onChange={(e) => change(f.key, e.target.value)} className={inputCls} />
-                  {errors[f.key] && <p className="text-destructive text-xs mt-1">{errors[f.key]}</p>}
+                {
+                  key: "name" as const,
+                  label: "Namn",
+                  type: "text",
+                  autoComplete: "name",
+                },
+                {
+                  key: "email" as const,
+                  label: "E-post",
+                  type: "email",
+                  autoComplete: "email",
+                },
+                {
+                  key: "subject" as const,
+                  label: "Ämne",
+                  type: "text",
+                  autoComplete: "off",
+                },
+              ].map((field) => (
+                <div key={field.key}>
+                  <label
+                    htmlFor={field.key}
+                    className="mb-1.5 block text-sm font-medium"
+                  >
+                    {field.label} *
+                  </label>
+
+                  <input
+                    id={field.key}
+                    name={field.key}
+                    type={field.type}
+                    autoComplete={field.autoComplete}
+                    value={form[field.key]}
+                    onChange={(event) =>
+                      change(field.key, event.target.value)
+                    }
+                    aria-invalid={Boolean(errors[field.key])}
+                    aria-describedby={
+                      errors[field.key]
+                        ? `${field.key}-error`
+                        : undefined
+                    }
+                    className={inputCls}
+                  />
+
+                  {errors[field.key] && (
+                    <p
+                      id={`${field.key}-error`}
+                      className="mt-1 text-xs text-destructive"
+                      role="alert"
+                    >
+                      {errors[field.key]}
+                    </p>
+                  )}
                 </div>
               ))}
 
               <fieldset>
-                <legend className="block text-sm font-medium mb-3">Vad vill du ha hjälp med?</legend>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {helpOptions.map((o) => {
-                    const on = help.includes(o);
+                <legend className="mb-3 block text-sm font-medium">
+                  Vad vill du ha hjälp med?
+                </legend>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {helpOptions.map((option) => {
+                    const selected = help.includes(option);
+
                     return (
-                      <label key={o} className={`flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition-colors ${on ? "border-primary bg-primary/10" : "border-border/50 bg-card hover:border-primary/30"}`}>
-                        <input type="checkbox" className="sr-only" checked={on} onChange={() => toggle(o)} />
-                        <span className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 ${on ? "bg-primary" : "border border-border"}`}>
-                          {on && <Check className="w-3 h-3 text-primary-foreground" />}
+                      <label
+                        key={option}
+                        className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3.5 transition-colors ${selected
+                            ? "border-primary bg-primary/10"
+                            : "border-border/50 bg-card hover:border-primary/30"
+                          }`}
+                      >
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={selected}
+                          onChange={() => toggle(option)}
+                        />
+
+                        <span
+                          className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded ${selected
+                              ? "bg-primary"
+                              : "border border-border"
+                            }`}
+                        >
+                          {selected && (
+                            <Check className="h-3 w-3 text-primary-foreground" />
+                          )}
                         </span>
-                        <span className="text-sm font-medium">{o}</span>
+
+                        <span className="text-sm font-medium">
+                          {option}
+                        </span>
                       </label>
                     );
                   })}
@@ -100,13 +274,54 @@ export default function InquiryForm() {
               </fieldset>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1.5">Meddelande *</label>
-                <textarea id="message" rows={7} value={form.message}
-                  onChange={(e) => change("message", e.target.value)} className={`${inputCls} resize-none`} />
-                {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
+                <label
+                  htmlFor="message"
+                  className="mb-1.5 block text-sm font-medium"
+                >
+                  Meddelande *
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={7}
+                  value={form.message}
+                  onChange={(event) =>
+                    change("message", event.target.value)
+                  }
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
+                  className={`${inputCls} resize-none`}
+                />
+
+                {errors.message && (
+                  <p
+                    id="message-error"
+                    className="mt-1 text-xs text-destructive"
+                    role="alert"
+                  >
+                    {errors.message}
+                  </p>
+                )}
               </div>
-              <button type="submit" className="w-full py-4 rounded-xl bg-gradient-gold text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-                Skicka meddelande
+
+              {submitError && (
+                <p
+                  className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive"
+                  role="alert"
+                >
+                  {submitError}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full rounded-xl bg-gradient-gold py-4 font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? "Skickar..." : "Skicka meddelande"}
               </button>
             </form>
           )}

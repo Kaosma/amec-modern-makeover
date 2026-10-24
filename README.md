@@ -1,73 +1,175 @@
-# Welcome to your Lovable project
+# AMEC Konsult
 
-## Project info
+A React application built with Vite and TypeScript, styled with Tailwind CSS and shadcn/ui. The website is deployed to Cloudflare Pages.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Tech Stack
 
-## How can I edit this code?
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Cloudflare Pages
+- Cloudflare Pages Functions
+- Resend for inquiry form emails
 
-There are several ways of editing your application.
+## Requirements
 
-**Use Lovable**
+- Node.js (current LTS version recommended)
+- pnpm
+- A Cloudflare account with the project connected to a Git repository
+- A Resend account and a verified sending domain for production email delivery
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Clone the repository and install dependencies:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+pnpm install
 ```
 
-**Edit a file directly in GitHub**
+Start the local development server:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+pnpm dev
+```
 
-**Use GitHub Codespaces**
+The Vite development server serves the frontend. Cloudflare Pages Functions do not run automatically through Vite, so use Wrangler to test the inquiry form locally.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Available Scripts
 
-## What technologies are used for this project?
+Check `package.json` for the scripts configured in this project. A typical setup includes:
 
-This project is built with:
+```sh
+pnpm dev       # Start the development server
+pnpm build     # Build the production site
+pnpm preview   # Preview the production build
+pnpm lint      # Run linting, if configured
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Only run scripts that exist in `package.json`.
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```text
+.
+├── functions/
+│   └── api/
+│       └── send-inquiry.js   # Inquiry email API endpoint
+├── public/                   # Static assets
+├── src/                      # React application
+├── index.html
+├── package.json
+└── vite.config.ts
+```
 
-## Can I connect a custom domain to my Lovable project?
+The `functions/` directory must be at the repository root, alongside `src` and `package.json`. Do not place it inside `src` or the build output directory.
 
-Yes, you can!
+## Inquiry Form and Email Delivery
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The inquiry form submits a POST request to:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```text
+/api/send-inquiry
+```
+
+Cloudflare Pages handles the request through `functions/api/send-inquiry.js`. The function validates submitted data on the server and uses Resend to send the inquiry to the configured recipient.
+
+### Dependencies
+
+Install the required dependencies if they are not already present:
+
+```sh
+pnpm add resend zod
+pnpm add -D wrangler
+```
+
+### Resend Setup
+
+1. Create an account at [Resend](https://resend.com/).
+2. Add the sending domain in Resend.
+3. Add the DNS records provided by Resend at the domain's DNS provider.
+4. Wait until Resend verifies the domain.
+5. Create a Resend API key.
+
+The sender address must use a domain verified in Resend. The recipient can be the client's existing business email address.
+
+### Local Environment Variables
+
+Create a `.dev.vars` file in the project root:
+
+```dotenv
+RESEND_API_KEY=re_your_actual_key
+RESEND_FROM_EMAIL="AMEC Konsult <formular@amecokonsult.se>"
+INQUIRY_TO_EMAIL=client@amecokonsult.se
+```
+
+Replace the example values with the actual API key, verified sender address, and destination inbox.
+
+Make sure `.dev.vars` is included in `.gitignore`. Never commit API keys or other secrets to the repository.
+
+### Test the Inquiry Form Locally
+
+Build the site and start the Cloudflare Pages development server:
+
+```sh
+pnpm build
+pnpm exec wrangler pages dev dist
+```
+
+Open the local URL printed by Wrangler and submit a test inquiry.
+
+This assumes Vite outputs the production build to `dist`. If the configured output directory is different, use that directory instead.
+
+### Production Environment Variables
+
+In the Cloudflare dashboard:
+
+1. Open **Workers & Pages**.
+2. Select the AMEC Konsult Pages project.
+3. Open **Settings → Variables and Secrets**.
+4. Add the following variables to the Production environment:
+
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Resend API key; store as a secret |
+| `RESEND_FROM_EMAIL` | Verified sender address |
+| `INQUIRY_TO_EMAIL` | Email address receiving inquiries |
+
+Add the variables to the Preview environment only if preview deployments should be able to send emails.
+
+Redeploy the project after changing the configuration.
+
+**Never prefix the Resend API key with `VITE_`.** Variables exposed to Vite client code must not contain secrets.
+
+## Deployment
+
+The project is deployed to Cloudflare Pages.
+
+For a typical Vite React application, configure the Pages project with:
+
+- **Production branch:** The branch used for production, commonly `main`
+- **Build command:** `pnpm build`
+- **Build output directory:** `dist`
+
+Commit and push changes to the connected Git repository to trigger a deployment.
+
+Ensure that the root-level `functions/` directory is included in the repository so Cloudflare Pages can deploy the API endpoint alongside the website.
+
+Cloudflare Pages Functions require a supported Pages deployment workflow. The standard Direct Upload workflow does not support Pages Functions.
+
+## Security and Troubleshooting
+
+- Never expose the Resend API key in frontend code.
+- Never commit `.dev.vars` or other files containing secrets.
+- Validate submitted form data on the server.
+- Limit accepted input sizes and escape user-provided content before including it in HTML emails.
+- Consider Cloudflare Turnstile and/or rate limiting to reduce automated spam.
+- If email delivery fails, check the Cloudflare Pages function logs and Resend email logs.
+- A successful API response means Resend accepted the email request; it does not guarantee that the message reached the recipient's inbox.
+
+## Development Workflow
+
+Make changes in your preferred editor or IDE. Commit and push changes to the Git repository connected to Cloudflare Pages to trigger a deployment.
