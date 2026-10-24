@@ -80,7 +80,7 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="mb-6 max-w-3xl text-4xl font-display leading-tight md:text-5xl lg:text-6xl"
           >
-            <span className="text-gradient-gold">Personlig redovisning - NY NYCKEL</span>{" "}
+            <span className="text-gradient-gold">Personlig redovisning</span>{" "}
             anpassad efter dina behov – för att hjälpa ditt företag nå sina mål
           </motion.h1>
 
